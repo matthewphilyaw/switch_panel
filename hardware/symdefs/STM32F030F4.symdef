@@ -1,0 +1,35 @@
+[labels]
+
+STM32F030F4
+refdes=U?
+! device=MCU
+! description=MICRO
+
+[left]
+
+16 VDD
+5 VDDA
+
+4 NRST
+1 BOOT0
+
+15 VSS
+
+[right]
+
+6 PA0
+7 PA1
+8 PA2
+9 PA3
+10 PA4
+11 PA5/SPI1_CLK
+12 PA6/SPI1_MISO
+13 PA7/SPI1_MOSI
+17 PA9/U1_TX
+18 PA10/U1_RX
+19 PA13/SWDIO
+20 PA14/SWCLK
+
+14 PB1
+2 PF0
+3 PF1

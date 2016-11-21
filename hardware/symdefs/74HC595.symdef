@@ -1,0 +1,30 @@
+[labels]
+
+74HC595
+refdes=U?
+! device=MCU
+! description=Shift Register
+
+[left]
+
+16 Vcc
+8 GND
+
+14 DS
+12 STCP
+11 SHCP
+
+13 ! OE
+10 ! MR
+
+[right]
+
+15 Q0
+1 Q1
+2 Q2
+3 Q3
+4 Q4
+5 Q5
+6 Q6
+7 Q7
+9 Q7s

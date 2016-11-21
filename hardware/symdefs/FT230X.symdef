@@ -1,0 +1,32 @@
+[labels]
+
+FT230X
+refdes=U?
+! device=FT230X
+! description=USB to USART
+
+[left]
+
+12 VCC
+9 USBDM
+8 USBDP
+11 ! RESET#
+3 VCCIO
+10 3V3OUT
+
+[bottom]
+
+5 GND
+13 GND
+
+[right]
+
+1 TXD
+4 RXD
+2 ! RTS#
+6 ! CTS#
+
+15 CBUS0
+14 ! CBUS1/RXLED#
+7 ! CBUS2/TXLED#
+16 CBUS3

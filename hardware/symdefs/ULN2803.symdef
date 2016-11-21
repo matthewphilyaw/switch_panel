@@ -1,0 +1,30 @@
+[labels]
+
+ULN2803A
+refdes=U?
+! device=MCU
+! description=Darlington Array
+
+[left]
+
+1 I1
+2 I2
+3 I3
+4 I4
+5 I5
+6 I6
+7 I7
+8 I8
+9 GND
+
+[left]
+
+18 O1
+17 O2
+16 O3
+15 O4
+14 O5
+13 O6
+12 O7
+11 O8
+10 COMMON

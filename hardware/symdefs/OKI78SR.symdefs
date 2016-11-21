@@ -1,0 +1,15 @@
+[labels]
+
+OKI-78SR
+refdes=U?
+! device=REG
+! description=Siwthc Mode Regulator
+
+[left]
+
+1 VIN
+2 GND
+
+[right]
+
+3 3V3
