@@ -1,5 +1,11 @@
 # Pin name action command file
 
+# Start of element CONN?
+ChangePinName(CONN?, 4, 4)
+ChangePinName(CONN?, 3, 3)
+ChangePinName(CONN?, 2, 2)
+ChangePinName(CONN?, 1, 1)
+
 # Start of element S2
 ChangePinName(S2, 2, 2)
 ChangePinName(S2, 1, 1)
@@ -7,16 +13,6 @@ ChangePinName(S2, 1, 1)
 # Start of element S1
 ChangePinName(S1, 2, 2)
 ChangePinName(S1, 1, 1)
-
-# Start of element J2
-ChangePinName(J2, 8, 8)
-ChangePinName(J2, 7, 7)
-ChangePinName(J2, 6, 6)
-ChangePinName(J2, 5, 5)
-ChangePinName(J2, 4, 4)
-ChangePinName(J2, 3, 3)
-ChangePinName(J2, 2, 2)
-ChangePinName(J2, 1, 1)
 
 # Start of element J3
 ChangePinName(J3, 8, 8)
@@ -370,76 +366,6 @@ ChangePinName(U3, 4, NRST)
 ChangePinName(U3, 3, PF1)
 ChangePinName(U3, 2, PF0)
 ChangePinName(U3, 1, BOOT0)
-
-# Start of element C4
-ChangePinName(C4, 2, 2)
-ChangePinName(C4, 1, 1)
-
-# Start of element C5
-ChangePinName(C5, 2, 2)
-ChangePinName(C5, 1, 1)
-
-# Start of element C6
-ChangePinName(C6, 2, 2)
-ChangePinName(C6, 1, 1)
-
-# Start of element C3
-ChangePinName(C3, 2, 2)
-ChangePinName(C3, 1, 1)
-
-# Start of element U2
-ChangePinName(U2, 16, CBUS3)
-ChangePinName(U2, 15, CBUS0)
-ChangePinName(U2, 14, CBUS1/RXLED#)
-ChangePinName(U2, 13, GND)
-ChangePinName(U2, 12, VCC)
-ChangePinName(U2, 11, RESET#)
-ChangePinName(U2, 10, 3V3OUT)
-ChangePinName(U2, 9, USBDM)
-ChangePinName(U2, 8, USBDP)
-ChangePinName(U2, 7, CBUS2/TXLED#)
-ChangePinName(U2, 6, CTS#)
-ChangePinName(U2, 5, GND)
-ChangePinName(U2, 4, RXD)
-ChangePinName(U2, 3, VCCIO)
-ChangePinName(U2, 2, RTS#)
-ChangePinName(U2, 1, TXD)
-
-# Start of element R1
-ChangePinName(R1, 1, 1)
-ChangePinName(R1, 2, 2)
-
-# Start of element R2
-ChangePinName(R2, 1, 1)
-ChangePinName(R2, 2, 2)
-
-# Start of element D1
-ChangePinName(D1, 2, 2)
-ChangePinName(D1, 1, 1)
-
-# Start of element L1
-ChangePinName(L1, 1, 1)
-ChangePinName(L1, 2, 2)
-
-# Start of element C2
-ChangePinName(C2, 2, 2)
-ChangePinName(C2, 1, 1)
-
-# Start of element C1
-ChangePinName(C1, 2, 2)
-ChangePinName(C1, 1, 1)
-
-# Start of element D2
-ChangePinName(D2, 2, 2)
-ChangePinName(D2, 1, 1)
-
-# Start of element CONN2
-ChangePinName(CONN2, 5, 5)
-ChangePinName(CONN2, G, G)
-ChangePinName(CONN2, 3, 3)
-ChangePinName(CONN2, 1, 1)
-ChangePinName(CONN2, 4, 4)
-ChangePinName(CONN2, 2, 2)
 
 # Start of element U1
 ChangePinName(U1, 3, 3V3)
