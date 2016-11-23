@@ -39,7 +39,7 @@ f.twopad(width = 0.7, padheight = 2.0, padwidth = 1.5)
 f.finish()
 
 
-
 f = Footgen("OKI78SR", output_format="geda")
 f.sip(pitch = 2.54, pins = 3, drill=1.016, diameter=2.0)
+f.box_corners(2,-5.5, -16, 5.5)
 f.finish()
