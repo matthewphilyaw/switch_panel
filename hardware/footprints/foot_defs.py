@@ -38,8 +38,15 @@ f = Footgen("LQH31C", output_format="geda")
 f.twopad(width = 0.7, padheight = 2.0, padwidth = 1.5)
 f.finish()
 
-
 f = Footgen("OKI78SR", output_format="geda")
 f.sip(pitch = 2.54, pins = 3, drill=1.016, diameter=2.0)
 f.box_corners(2,-5.5, -16, 5.5)
+f.finish()
+
+f = Footgen("TL3315", output_format="geda")
+f.add_pad(name="1", x=(-2.25), y=(-1.75), xsize=0.80, ysize=0.80)
+f.add_pad(name="1", x=(2.25), y=(-1.75), xsize=0.80, ysize=0.80)
+f.add_pad(name="2", x=(-2.25), y=(1.75), xsize=0.80, ysize=0.80)
+f.add_pad(name="2", x=(2.25), y=(1.75), xsize=0.80, ysize=0.80)
+f.silkbox(h=5, w=6)
 f.finish()

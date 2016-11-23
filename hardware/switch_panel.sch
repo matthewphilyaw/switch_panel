@@ -1757,7 +1757,7 @@ refdes=S1
 T 41700 44300 5 10 0 0 0 0 1
 device=SWITCH_PUSHBUTTON_NO
 T 41300 43700 5 10 0 0 0 0 1
-footprint=MICROPB
+footprint=TL3315
 }
 C 41300 42700 1 0 0 switch-pushbutton-no-1.sym
 {
@@ -1766,7 +1766,7 @@ refdes=S2
 T 41700 43300 5 10 0 0 0 0 1
 device=SWITCH_PUSHBUTTON_NO
 T 41300 42700 5 10 0 0 0 0 1
-footprint=MICROPB
+footprint=TL3315
 }
 C 49300 36400 1 0 1 connector4-2.sym
 {
