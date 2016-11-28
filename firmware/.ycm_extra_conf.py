@@ -35,7 +35,7 @@ import ycm_core
 # compilation database set (by default, one is not set).
 # CHANGE THIS LIST OF FLAGS. YES, THIS IS THE DROID YOU HAVE BEEN LOOKING FOR.
 flags = [
-'-DSTM32F030x6',
+'-DSTM32F030x8',
 '-DUSE_FULL_LL_DRIVER',
 '-Wall',
 '-fno-exceptions',
@@ -52,10 +52,10 @@ flags = [
 '-undef', # get rid of standard definitions to allow us to include arm math header
 '-I', '/usr/local/gcc-arm-none-eabi-5_2-2015q4/arm-none-eabi/include',
 '-I', './include',
-'-I', './system/target/f0/include',
-'-I', './system/target/f0/cmsis/include',
-'-I', './system/target/f0/cmsis/include/device',
-'-I', './system/target/f0/hal_ll/include',
+'-I', './system/f0/include',
+'-I', './system/f0/cmsis/include',
+'-I', './system/f0/cmsis/include/device',
+'-I', './system/f0/hal_ll/include',
 ]
 
 

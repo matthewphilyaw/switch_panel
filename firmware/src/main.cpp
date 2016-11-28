@@ -1,19 +1,53 @@
 #include "main.h"
 
+using namespace spanel;
+
+uint8_t patterns[] = {
+  0b01011011,
+  0b11011011,
+  0b00111100,
+  0b11101101,
+  0b11001011,
+  0b11011100,
+  0b11010101,
+  0b01011101
+};
+
 int main() {
-  LL_AHB1_GRP1_EnableClock(LL_AHB1_GRP1_PERIPH_GPIOA);
+  bsp::Board::init_clock();
 
-  LL_GPIO_InitTypeDef p;
-
-  p.Pin = 3;
-  p.Mode = LL_GPIO_MODE_OUTPUT;
-  p.OutputType = LL_GPIO_OUTPUT_PUSHPULL;
-  p.Pull = LL_GPIO_PULL_NO;
-
-  LL_GPIO_Init(GPIOA, &p);
+  bsp::Board board;
 
   for (;;) {
-    LL_GPIO_TogglePin(GPIOA, 3);
-    LL_mDelay(100);
+    for (int i = 0; i < 64; i++) {
+      board.display(patterns[i % 8]);
+
+      if (i % 8 == 0) {
+        LL_mDelay(250);
+      }
+      if (i % 4 == 0) {
+        LL_mDelay(100);
+      }
+      if (i % 3 == 0) {
+        LL_mDelay(450);
+      }
+    }
+
+    uint8_t chase = 1;
+    for (int i = 0; i < 10; i++) {
+      while(chase != 0) {
+        board.display(chase);
+        chase <<= 1;
+        LL_mDelay(50);
+      }
+
+      chase = 0x80 >> 1;
+      while(chase != 0) {
+        board.display(chase);
+        chase >>= 1;
+        LL_mDelay(50);
+      }
+      chase = 1 << 1;
+    }
   }
 }

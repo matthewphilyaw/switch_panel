@@ -1,5 +1,5 @@
 # Project Setup
-PROJECT=STM32L0
+PROJECT=SWITCH_PANEL
 OUT_DIR=build
 TOOL_ROOT=/usr/local/gcc-arm-none-eabi-5_2-2015q4/bin
 
@@ -7,24 +7,31 @@ SUPPORTED_FAMILIES=f0
 
 TARGET_FAMILY=f0
 TARGET_DEVICE=STM32F030x6
+TARGET_DEVICE=STM32F030x8
 
 ifeq ($(filter $(TARGET_FAMILY), $(SUPPORTED_FAMILIES)),)
-$(error Target Family: $(TARGET_FAMILY) is not supported)
+$(error Target Family: $(TARGET_FAMILY) is not supported. Supported device families are $(SUPPORTED_FAMILIES))
 endif
 
 DEFS=-D$(TARGET_DEVICE) -DUSE_FULL_LL_DRIVER
+
+ifeq (f0, $(TARGET_FAMILY))
 MCU=cortex-m0
+else
+$(error can't set MCU for $(TARGET_FAMILY))
+endif
 
 SYS_DIR=system
 
 # Src/Include dirs
 INC_DIRS=include \
-		 $(SYS_DIR)/target/$(TARGET_FAMILY)/cmsis/include \
-		 $(SYS_DIR)/target/$(TARGET_FAMILY)/cmsis/include/device \
-		 $(SYS_DIR)/target/$(TARGET_FAMILY)/hal_ll/include \
+		 $(SYS_DIR)/$(TARGET_FAMILY)/cmsis/include \
+		 $(SYS_DIR)/$(TARGET_FAMILY)/cmsis/include/device \
+		 $(SYS_DIR)/$(TARGET_FAMILY)/hal_ll/include \
 
 USR_SRC_DIR=src
-SYS_SRC_DIR+=$(SYS_DIR)/target/$(TARGET_FAMILY)
+SYS_SRC_DIR=$(SYS_DIR)/$(TARGET_FAMILY)/hal_ll/src \
+			$(SYS_DIR)/$(TARGET_FAMILY)/device/$(TARGET_DEVICE) \
 
 # Output Files
 ELF=$(PROJECT).elf
@@ -54,7 +61,7 @@ A2L=$(TOOL)addr2line
 
 INCS=$(INC_DIRS:%=-I%)
 
-LDSCRIPTS_FILES=$(shell find -L $(SYS_DIR) -name '*.ld')
+LDSCRIPTS_FILES=$(shell find -L $(SYS_DIR)/$(TARGET_FAMILY)/device/$(TARGET_DEVICE) -name '*.ld')
 LDSCRIPTS=$(LDSCRIPTS_FILES:%=-T%)
 
 # System files
@@ -109,7 +116,7 @@ LD_FLAGS=$(LDSCRIPTS) \
 		 --specs=nano.specs \
 		 -lm \
 
-.PHONY: all release release-memopt debug debug-no-opt clean clean-all
+.PHONY: all release release-memopt debug debug-no-opt clean
 
 all: dirs debug
 
@@ -175,16 +182,6 @@ $(OUT_DIR)/%.o: %.S
 	@echo "Assembled "$<"!\n"
 
 clean:
-	rm -f \
-		$(USR_OBJS) \
-		$(USR_OBJS:.o=.d) \
-		$(OUT_DIR)/$(ELF) \
-		$(OUT_DIR)/$(HEX) \
-		$(OUT_DIR)/$(LST) \
-		$(OUT_DIR)/$(BIN) \
-		$(OUT_DIR)/$(MAP)
-
-clean-all:
 	rm -f \
 		$(OBJS) \
 		$(OBJS:.o=.d) \
