@@ -1,22 +1,10 @@
-#include "bsp/board.h"
+#include "bsp/nucleo_l053R8/board.h"
 
 namespace spanel {
   namespace bsp {
 
-    void Board::init_clock(void) {
-      LL_UTILS_PLLInitTypeDef pll;
-      LL_UTILS_ClkInitTypeDef clk;
-
-      pll.Prediv = LL_RCC_PREDIV_DIV_2;
-      pll.PLLMul = LL_RCC_PLL_MUL_12;
-      clk.AHBCLKDivider = LL_RCC_SYSCLK_DIV_1;
-      clk.APB1CLKDivider = LL_RCC_SYSCLK_DIV_1;
-
-      LL_PLL_ConfigSystemClock_HSI(&pll, &clk);
-      LL_Init1msTick(SystemCoreClock);
-    }
-
     Board::Board() :
+      clck(),
       led(gpio::DefaultDigitalOut<gpio::PA5::Port, gpio::PA5::Pin>()),
       display_latch(gpio::DefaultDigitalOut<gpio::PB10::Port, gpio::PB10::Pin>()),
       spi(spi::Spi(SPI2))
@@ -53,5 +41,6 @@ namespace spanel {
       buffer |= this->spi.receive();
       return buffer;
     }
+
   }
 }

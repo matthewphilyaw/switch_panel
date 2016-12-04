@@ -3,20 +3,22 @@ PROJECT=SWITCH_PANEL
 OUT_DIR=build
 TOOL_ROOT=/usr/local/gcc-arm-none-eabi-5_2-2015q4/bin
 
-SUPPORTED_FAMILIES=f0
+SUPPORTED_FAMILIES=f0 l0
 
-TARGET_FAMILY=f0
-TARGET_DEVICE=STM32F030x6
-TARGET_DEVICE=STM32F030x8
+TARGET_FAMILY=l0
+TARGET_DEVICE=STM32L053xx
+TARGET_BOARD=nucleo_l053R8
 
 ifeq ($(filter $(TARGET_FAMILY), $(SUPPORTED_FAMILIES)),)
 $(error Target Family: $(TARGET_FAMILY) is not supported. Supported device families are $(SUPPORTED_FAMILIES))
 endif
 
-DEFS=-D$(TARGET_DEVICE) -DUSE_FULL_LL_DRIVER
+DEFS=-D$(TARGET_BOARD) -DFAM_$(TARGET_FAMILY) -D$(TARGET_DEVICE) -DUSE_FULL_LL_DRIVER
 
 ifeq (f0, $(TARGET_FAMILY))
 MCU=cortex-m0
+else ifeq (l0, $(TARGET_FAMILY))
+MCU=cortex-m0plus
 else
 $(error can't set MCU for $(TARGET_FAMILY))
 endif
@@ -29,7 +31,7 @@ INC_DIRS=include \
 		 $(SYS_DIR)/$(TARGET_FAMILY)/cmsis/include/device \
 		 $(SYS_DIR)/$(TARGET_FAMILY)/hal_ll/include \
 
-USR_SRC_DIR=src
+USR_SRC_DIR=src bsp/$(TARGET_BOARD)
 SYS_SRC_DIR=$(SYS_DIR)/$(TARGET_FAMILY)/hal_ll/src \
 			$(SYS_DIR)/$(TARGET_FAMILY)/device/$(TARGET_DEVICE) \
 

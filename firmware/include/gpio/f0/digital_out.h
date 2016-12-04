@@ -13,17 +13,17 @@ namespace spanel {
     class DigitalOut : public Pin {
       public:
         DigitalOut():
-          Pin((GPIO_TypeDef *)TPortAddress, gpioHelper::getPeripheral<TPortAddress>() ,TPin) { 
-            LL_GPIO_InitTypeDef p;
+          Pin((GPIO_TypeDef *)TPortAddress, gpioHelper::getPeripheral<TPortAddress>() ,TPin) {
+          LL_GPIO_InitTypeDef p;
 
-            p.Pin = TPin;
-            p.Mode = LL_GPIO_MODE_OUTPUT;
-            p.OutputType = TOutputType;
-            p.Speed = TSpeed;
-            p.Pull = TPull;
+          p.Pin = TPin;
+          p.Mode = LL_GPIO_MODE_OUTPUT;
+          p.OutputType = TOutputType;
+          p.Speed = TSpeed;
+          p.Pull = TPull;
 
-            LL_GPIO_Init((GPIO_TypeDef *)TPortAddress, &p);
-          }
+          LL_GPIO_Init((GPIO_TypeDef *)TPortAddress, &p);
+        }
     };
 
 

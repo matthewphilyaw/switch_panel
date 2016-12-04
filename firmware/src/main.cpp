@@ -14,8 +14,6 @@ uint8_t patterns[] = {
 };
 
 int main() {
-  bsp::Board::init_clock();
-
   bsp::Board board;
 
   for (;;) {

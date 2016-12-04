@@ -2,12 +2,14 @@
 #define __BOARD_H__
 
 #include "system.h"
+#include "bsp/nucleo_l011K4/clock.h"
 
 namespace spanel {
   namespace bsp {
 
     class Board {
       private:
+        Clock clck;
         gpio::Pin led;
         gpio::Pin display_latch;
         spi::Spi spi;
