@@ -5,9 +5,9 @@ TOOL_ROOT=/usr/local/gcc-arm-none-eabi-5_2-2015q4/bin
 
 SUPPORTED_FAMILIES=f0 l0
 
-TARGET_FAMILY=l0
-TARGET_DEVICE=STM32L053xx
-TARGET_BOARD=nucleo_l053R8
+TARGET_FAMILY=f0
+TARGET_DEVICE=STM32F030x8
+TARGET_BOARD=nucleo_f030R8
 
 ifeq ($(filter $(TARGET_FAMILY), $(SUPPORTED_FAMILIES)),)
 $(error Target Family: $(TARGET_FAMILY) is not supported. Supported device families are $(SUPPORTED_FAMILIES))
@@ -31,7 +31,7 @@ INC_DIRS=include \
 		 $(SYS_DIR)/$(TARGET_FAMILY)/cmsis/include/device \
 		 $(SYS_DIR)/$(TARGET_FAMILY)/hal_ll/include \
 
-USR_SRC_DIR=src bsp/$(TARGET_BOARD)
+USR_SRC_DIR=bsp/$(TARGET_BOARD) src
 SYS_SRC_DIR=$(SYS_DIR)/$(TARGET_FAMILY)/hal_ll/src \
 			$(SYS_DIR)/$(TARGET_FAMILY)/device/$(TARGET_DEVICE) \
 
@@ -120,7 +120,7 @@ LD_FLAGS=$(LDSCRIPTS) \
 
 .PHONY: all release release-memopt debug debug-no-opt clean
 
-all: dirs debug
+all: debug
 
 dirs: $(OBJ_OUT_DIRS) 
 
@@ -150,6 +150,7 @@ debug-no-opt: CXX_FLAGS+=-O0 -g3
 debug-no-opt: LD_FLAGS+=-g0
 debug-no-opt: release
 
+release: dirs
 release: $(OUT_DIR)/$(LST)
 release: $(OUT_DIR)/$(HEX)
 release: $(OUT_DIR)/$(BIN)

@@ -30,6 +30,7 @@ int main() {
     last_read = leds;
 
     if (changes > 4) {
+      board.status_led.toggle();
       uint8_t chase = 1;
       for (int i = 0; i < 10; i++) {
         while(chase != 0) {

@@ -21,18 +21,6 @@
 #include "gpio/l0/alternate_out.h"
 #include "spi/l0/spi.h"
 
-#if defined(nucleo_l011K4) // board specific includes
-
-#include "bsp/nucleo_l011K4/board.h"
-
-#elif defined(nucleo_l031K6)
-
-#include "bsp/nucleo_l031K6/board.h"
-
-#elif defined(nucleo_l053R8)
-
-#include "bsp/nucleo_l053R8/board.h"
-
-#endif // board specific includes
+#include "bsp/clock/l0/clock.h"
 
 #endif /* ifndef SYSTEM_INCLUDES_H */

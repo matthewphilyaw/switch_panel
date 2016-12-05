@@ -11,7 +11,7 @@
 
 #else
 
-#error FAM_xx hasn't been set please check the make file
+#error FAM_xx has not been set please check the make file
 
 #endif
 
