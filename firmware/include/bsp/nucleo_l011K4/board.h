@@ -17,8 +17,8 @@ namespace spanel {
       public:
         Board();
         static void init_clock();
-        void display(uint16_t data);
-        uint16_t read();
+        void display(uint8_t data);
+        uint8_t read();
     };
 
   }

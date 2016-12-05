@@ -16,36 +16,41 @@ uint8_t patterns[] = {
 int main() {
   bsp::Board board;
 
+  uint8_t leds;
+  uint8_t changes = 0;
+  uint8_t last_read = board.read();
   for (;;) {
-    for (int i = 0; i < 64; i++) {
-      board.display(patterns[i % 8]);
+    leds = board.read();
+    board.display(leds);
 
-      if (i % 8 == 0) {
-        LL_mDelay(250);
-      }
-      if (i % 4 == 0) {
-        LL_mDelay(100);
-      }
-      if (i % 3 == 0) {
-        LL_mDelay(450);
-      }
+    if (leds != last_read) {
+      changes++;
     }
 
-    uint8_t chase = 1;
-    for (int i = 0; i < 10; i++) {
-      while(chase != 0) {
-        board.display(chase);
-        chase <<= 1;
-        LL_mDelay(50);
+    last_read = leds;
+
+    if (changes > 4) {
+      uint8_t chase = 1;
+      for (int i = 0; i < 10; i++) {
+        while(chase != 0) {
+          board.display(chase);
+          chase <<= 1;
+          LL_mDelay(50);
+        }
+
+        chase = 0x80 >> 1;
+        while(chase != 0) {
+          board.display(chase);
+          chase >>= 1;
+          LL_mDelay(50);
+        }
+        chase = 1 << 1;
       }
 
-      chase = 0x80 >> 1;
-      while(chase != 0) {
-        board.display(chase);
-        chase >>= 1;
-        LL_mDelay(50);
-      }
-      chase = 1 << 1;
+      changes = 0;
+    }
+    else {
+      LL_mDelay(50);
     }
   }
 }

@@ -19,13 +19,11 @@ namespace spanel {
       this->led.reset();
     }
 
-    void Board::display(uint16_t data) {
+    void Board::display(uint8_t data) {
       this->led.toggle();
-      while(!this->spi.can_send());
-      this->spi.send((uint8_t)((data >> 8) & 0x00ff));
 
       while(!this->spi.can_send());
-      this->spi.send((uint8_t)(data & 0x00ff));
+      this->spi.send(data);
 
       while(spi.is_busy());
 
@@ -33,13 +31,19 @@ namespace spanel {
       this->display_latch.reset();
     }
 
-    uint16_t Board::read() {
+    uint8_t Board::read() {
+      /*
+      this->led.toggle();
+      this->read_latch.set();
+      this->read_latch.reset();
+
+      while(!this->spi.can_send());
+      this->spi.send(0x0);
+
       while(!this->spi.can_recieve());
 
-      uint16_t buffer = 0;
-      buffer |= this->spi.receive() << 8;
-      buffer |= this->spi.receive();
-      return buffer;
+      return this->spi.receive();
+      */
     }
 
   }

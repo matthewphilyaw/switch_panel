@@ -31,7 +31,7 @@ namespace spanel {
           spi_def.ClockPolarity     = LL_SPI_POLARITY_HIGH;
           spi_def.ClockPhase        = LL_SPI_PHASE_2EDGE;
           spi_def.NSS               = LL_SPI_NSS_SOFT;
-          spi_def.BaudRate          = LL_SPI_BAUDRATEPRESCALER_DIV2;
+          spi_def.BaudRate          = LL_SPI_BAUDRATEPRESCALER_DIV16;
           spi_def.BitOrder          = LL_SPI_MSB_FIRST;
           spi_def.CRCCalculation    = LL_SPI_CRCCALCULATION_DISABLE;
           spi_def.CRCPoly           = 7U;
